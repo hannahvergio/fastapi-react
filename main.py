@@ -4,6 +4,17 @@ from database import SessionLocal, engine
 from models import Task, Base
 from pydantic import BaseModel
 from typing import List
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or specify your frontend domain here
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
@@ -59,3 +70,5 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
     db.delete(db_task)
     db.commit()
     return {"message": "Task deleted"}
+
+
