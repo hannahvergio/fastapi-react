@@ -10,7 +10,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173/appdev_react-django_frontend"],
+    allow_origins=["https://hannahvergio.github.io"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
