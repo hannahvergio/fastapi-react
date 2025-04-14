@@ -10,14 +10,13 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # or specify your frontend domain here
+    allow_origins=["http://localhost:5173/appdev_react-django_frontend"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 Base.metadata.create_all(bind=engine)
-app = FastAPI()
 
 # Dependency
 def get_db():
